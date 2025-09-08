@@ -53,19 +53,22 @@ const BiodiversityChart = ({ data, title }) => {
       currentAngle += angle;
     });
 
-    // Add animation
+    // Add subtle animation without clearing labels
     let animationFrame = 0;
     const animate = () => {
-      animationFrame += 0.02;
+      animationFrame += 0.01;
+
+      // Only animate the pie slices, keep labels static
       ctx.save();
       ctx.translate(width / 2, height / 2);
-      ctx.rotate(Math.sin(animationFrame) * 0.05);
+      ctx.rotate(Math.sin(animationFrame) * 0.02); // Reduced rotation
       ctx.translate(-width / 2, -height / 2);
 
-      // Redraw chart with rotation
-      ctx.clearRect(0, 0, width, height);
-      currentAngle = 0;
+      // Clear only the pie chart area, not the entire canvas
+      ctx.clearRect(width / 2 - 110, height / 2 - 110, 220, 220);
 
+      // Redraw pie slices
+      currentAngle = 0;
       sampleData.forEach((item) => {
         const angle = (item.count / total) * 2 * Math.PI;
         ctx.beginPath();
@@ -81,10 +84,31 @@ const BiodiversityChart = ({ data, title }) => {
       });
 
       ctx.restore();
+
+      // Redraw labels (outside the rotation transform)
+      currentAngle = 0;
+      sampleData.forEach((item) => {
+        const angle = (item.count / total) * 2 * Math.PI;
+        const labelAngle = currentAngle + angle / 2;
+        const labelX = width / 2 + Math.cos(labelAngle) * 120;
+        const labelY = height / 2 + Math.sin(labelAngle) * 120;
+
+        // Clear label area and redraw
+        ctx.clearRect(labelX - 30, labelY - 10, 60, 30);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(item.species, labelX, labelY);
+        ctx.fillText(`${item.count}`, labelX, labelY + 15);
+
+        currentAngle += angle;
+      });
+
       requestAnimationFrame(animate);
     };
 
-    animate();
+    // Start animation after a short delay
+    setTimeout(animate, 1000);
   }, [data]);
 
   return (

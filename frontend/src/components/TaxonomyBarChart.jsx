@@ -46,7 +46,7 @@ const TaxonomyBarChart = ({ data, title }) => {
           if (currentHeight < targetHeight) {
             currentHeight += animationSpeed;
 
-            // Clear and redraw
+            // Clear only the bar area, not the entire canvas
             ctx.clearRect(x - 1, y - 1, barWidth + 2, height - y + 1);
 
             // Draw bar
@@ -79,17 +79,35 @@ const TaxonomyBarChart = ({ data, title }) => {
       };
 
       animateBar();
-
-      // Draw labels
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '11px Arial';
-      ctx.textAlign = 'center';
-      ctx.save();
-      ctx.translate(x + barWidth / 2, height - 30);
-      ctx.rotate(-Math.PI / 4);
-      ctx.fillText(item.taxa, 0, 0);
-      ctx.restore();
     });
+
+    // Draw all labels after bars are drawn to ensure they stay visible
+    setTimeout(() => {
+      sampleData.forEach((item, index) => {
+        const x = 60 + index * (barWidth + barSpacing);
+
+        // Draw labels with better visibility
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '11px Arial';
+        ctx.textAlign = 'center';
+        ctx.save();
+        ctx.translate(x + barWidth / 2, height - 30);
+        ctx.rotate(-Math.PI / 4);
+        ctx.fillText(item.taxa, 0, 0);
+        ctx.restore();
+
+        // Add background for better readability
+        const labelWidth = ctx.measureText(item.taxa).width;
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.fillRect(x + barWidth / 2 - labelWidth / 2 - 2, height - 35, labelWidth + 4, 12);
+        ctx.fillStyle = '#ffffff';
+        ctx.save();
+        ctx.translate(x + barWidth / 2, height - 30);
+        ctx.rotate(-Math.PI / 4);
+        ctx.fillText(item.taxa, 0, 0);
+        ctx.restore();
+      });
+    }, 3000); // Wait for bar animation to complete
 
     // Draw axes
     ctx.strokeStyle = '#ffffff';
