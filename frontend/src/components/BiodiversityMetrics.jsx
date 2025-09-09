@@ -70,14 +70,14 @@ const BiodiversityMetrics = () => {
 
   return (
     <div className="biodiversity-metrics">
-      <h3>📊 Biodiversity Assessment Metrics</h3>
+      <h3>Biodiversity Assessment Metrics</h3>
 
       <div className="metrics-grid">
         <MetricCard
           title="Species Richness"
           value={animatedValues.speciesRichness}
           unit="species"
-          icon="🦠"
+          icon=""
           description="Total number of distinct eukaryotic taxa identified"
         />
 
@@ -85,7 +85,7 @@ const BiodiversityMetrics = () => {
           title="Shannon Diversity"
           value={animatedValues.shannonDiversity}
           unit="H'"
-          icon="📈"
+          icon=""
           description="Measure of species diversity accounting for abundance"
         />
 
@@ -93,7 +93,7 @@ const BiodiversityMetrics = () => {
           title="Simpson Diversity"
           value={animatedValues.simpsonDiversity}
           unit="D"
-          icon="🔄"
+          icon=""
           description="Probability that two randomly selected individuals belong to different species"
         />
 
@@ -101,7 +101,7 @@ const BiodiversityMetrics = () => {
           title="Evenness"
           value={animatedValues.evenness}
           unit="J"
-          icon="⚖️"
+          icon=""
           description="Measure of how evenly species are distributed"
         />
 
@@ -109,7 +109,7 @@ const BiodiversityMetrics = () => {
           title="Total Reads"
           value={animatedValues.totalReads.toLocaleString()}
           unit="reads"
-          icon="🧬"
+          icon=""
           description="Total number of sequencing reads processed"
         />
 
@@ -117,7 +117,7 @@ const BiodiversityMetrics = () => {
           title="Classified Reads"
           value={animatedValues.classifiedReads.toLocaleString()}
           unit="reads"
-          icon="✅"
+          icon=""
           description="Reads successfully assigned to taxonomic groups"
         />
       </div>
@@ -138,18 +138,18 @@ const BiodiversityMetrics = () => {
       </div>
 
       <div className="ai-insights">
-        <h4>🤖 AI Model Insights</h4>
+        <h4>AI Model Insights</h4>
         <div className="insights-list">
           <div className="insight-item">
-            <span className="insight-icon">🎯</span>
+            <span className="insight-icon"></span>
             <span>High confidence classification for 89% of taxa</span>
           </div>
           <div className="insight-item">
-            <span className="insight-icon">🆕</span>
+            <span className="insight-icon"></span>
             <span>12 potentially novel species detected</span>
           </div>
           <div className="insight-item">
-            <span className="insight-icon">🌊</span>
+            <span className="insight-icon"></span>
             <span>Deep-sea specific taxa identified in 45% of samples</span>
           </div>
         </div>

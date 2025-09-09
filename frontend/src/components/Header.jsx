@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <header>
-      <h1>🌊 eDNA Deep Sea Biodiversity Analyzer</h1>
+      <h1>eDNA Deep Sea Biodiversity Analyzer</h1>
       <p>Upload, Analyze & Discover Deep-Sea Life</p>
       <nav>
         <ul>

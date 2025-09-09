@@ -4,30 +4,30 @@ import { Link } from "react-router-dom";
 function HomePage() {
   return (
     <div className="page-container">
-      <h1>🌊 Welcome to Deep-Sea eDNA Explorer</h1>
+      <h1>Welcome to Deep-Sea eDNA Explorer</h1>
       <p>Discover the hidden world beneath the waves through cutting-edge environmental DNA analysis technology.</p>
 
       <div className="features-grid">
         <div className="feature-card">
-          <div className="feature-icon">🧬</div>
+          <div className="feature-icon">DNA</div>
           <h3>DNA Analysis</h3>
           <p>Advanced sequencing and analysis of environmental DNA samples</p>
         </div>
 
         <div className="feature-card">
-          <div className="feature-icon">🌊</div>
+          <div className="feature-icon">Ocean</div>
           <h3>Deep-Sea Exploration</h3>
           <p>Uncover biodiversity in the deepest ocean trenches</p>
         </div>
 
         <div className="feature-card">
-          <div className="feature-icon">📊</div>
+          <div className="feature-icon">Charts</div>
           <h3>Data Visualization</h3>
           <p>Interactive charts and comprehensive biodiversity reports</p>
         </div>
 
         <div className="feature-card">
-          <div className="feature-icon">🔬</div>
+          <div className="feature-icon">Research</div>
           <h3>Scientific Research</h3>
           <p>Support marine conservation and scientific discovery</p>
         </div>

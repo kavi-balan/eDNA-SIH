@@ -78,14 +78,14 @@ const SequenceAnalyzer = () => {
 
   return (
     <div className="sequence-analyzer">
-      <h3>🧬 Real-time Sequence Analysis</h3>
+      <h3>Real-time Sequence Analysis</h3>
       <div className="analyzer-controls">
         <button
           className="button"
           onClick={startAnalysis}
           disabled={isProcessing}
         >
-          {isProcessing ? '🔄 Analyzing...' : '🚀 Start AI Analysis'}
+          {isProcessing ? 'Analyzing...' : 'Start AI Analysis'}
         </button>
       </div>
 
@@ -129,7 +129,7 @@ const SequenceAnalyzer = () => {
 
       {isProcessing && (
         <div className="processing-summary">
-          <p>🔬 AI Model Processing: {processingIndex + 1} / {sequences.length} sequences</p>
+          <p>AI Model Processing: {processingIndex + 1} / {sequences.length} sequences</p>
           <div className="overall-progress">
             <div
               className="progress-fill"
